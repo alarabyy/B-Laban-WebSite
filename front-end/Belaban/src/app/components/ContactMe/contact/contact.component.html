@@ -1,0 +1,25 @@
+<div class="contact-container">
+  <h2>Contact Us</h2>
+
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="sendMessage()">
+    <label>
+      Name:
+      <input type="text" [(ngModel)]="name" name="name" required />
+    </label>
+
+    <label>
+      Email:
+      <input type="email" [(ngModel)]="email" name="email" required />
+    </label>
+
+    <label>
+      Message:
+      <textarea [(ngModel)]="message" name="message" rows="5" required></textarea>
+    </label>
+
+    <button type="submit">Send Message</button>
+  </form>
+</div>

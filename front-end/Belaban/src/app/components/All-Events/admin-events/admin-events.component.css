@@ -1,0 +1,100 @@
+.admin-events-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f8ff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 122, 204, 0.2);
+  color: #03396c;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #005b96;
+}
+
+.loading,
+.error-message,
+.no-events {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: #d9534f;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  background-color: #e6f2ff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 93, 171, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 93, 171, 0.4);
+}
+
+.event-image {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 20px;
+}
+
+.event-content {
+  flex-grow: 1;
+}
+
+.event-content h2 {
+  margin: 0 0 8px 0;
+  color: #0277bd;
+}
+
+.event-date {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #039be5;
+}
+
+button.delete-btn {
+  background-color: #e63946;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+button.delete-btn:hover:not(:disabled) {
+  background-color: #c5303f;
+}
+
+button.delete-btn:disabled {
+  background-color: #f7b7bb;
+  cursor: not-allowed;
+}
+.event-image {
+  width: 650%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+}

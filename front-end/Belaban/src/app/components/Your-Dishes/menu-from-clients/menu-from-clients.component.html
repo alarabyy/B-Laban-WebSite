@@ -1,0 +1,13 @@
+<div class="menu-container animate-slide">
+  <h2>Client-Created Dishes</h2>
+
+  <div class="dish-grid">
+    <div class="dish-card" *ngFor="let dish of dishes">
+      <img [src]="imageBaseUrl + dish.imageUrl" alt="{{ dish.dishName }}" class="dish-image" />
+      <h3>{{ dish.dishName }}</h3>
+      <p><strong>Ingredients:</strong> {{ dish.ingredients }}</p>
+      <p><strong>Created by:</strong> {{ dish.fullname }}</p>
+      <p><strong>Email:</strong> {{ dish.email }}</p>
+    </div>
+  </div>
+</div>

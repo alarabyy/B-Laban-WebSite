@@ -1,0 +1,108 @@
+<div class="add-menu-form">
+  <form [formGroup]="menuForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name" placeholder="Enter product name" />
+      <div class="error" *ngIf="menuForm.get('name')?.invalid && menuForm.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" placeholder="Enter product description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input id="price" type="number" formControlName="price" placeholder="Enter price" />
+      <div class="error" *ngIf="menuForm.get('price')?.invalid && menuForm.get('price')?.touched">
+        Price is required and must be a positive number.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input id="image" type="file" (change)="onImageSelected($event)" accept="image/*" />
+      <div class="error" *ngIf="!selectedImage && menuForm.touched">
+        Please select an image.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="menuForm.invalid || !selectedImage">Add to Menu</button>
+  </form>
+</div>
+
+<style>
+  .add-menu-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #e6f0ff; /* Light blue background */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 102, 204, 0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #003366;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    padding: 0.5rem;
+    border: 1px solid #99c2ff;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 5px #3399ff;
+  }
+
+  input[type="file"] {
+    font-size: 1rem;
+    color: #003366;
+  }
+
+  button {
+    background-color: #0059b3;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+
+  button:disabled {
+    background-color: #99c2ff;
+    cursor: not-allowed;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #004080;
+  }
+
+  .error {
+    color: #cc3300;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+  }
+</style>

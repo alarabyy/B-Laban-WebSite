@@ -1,0 +1,99 @@
+<div class="container">
+
+  <h2>Customer Submitted Dishes</h2>
+
+  <div *ngIf="loading" class="loading">Loading dishes...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && !error && dishes.length > 0" class="dish-table">
+
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Dish Name</th>
+        <th>Ingredients</th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th class="actions">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let dish of dishes">
+        <td>
+          <img
+            *ngIf="dish.imageUrl"
+            [src]="'https://localhost:7183/' + dish.imageUrl"
+            alt="{{ dish.dishName }}"
+          />
+          <span *ngIf="!dish.imageUrl" class="no-image">No Image</span>
+        </td>
+
+        <!-- Dish Name -->
+        <td *ngIf="editingId !== dish.id">{{ dish.dishName }}</td>
+        <td *ngIf="editingId === dish.id">
+          <input type="text" [(ngModel)]="editForm.dishName" />
+        </td>
+
+        <!-- Ingredients -->
+        <td *ngIf="editingId !== dish.id">{{ dish.ingredients }}</td>
+        <td *ngIf="editingId === dish.id">
+          <textarea rows="2" [(ngModel)]="editForm.ingredients"></textarea>
+        </td>
+
+        <!-- Customer Full Name -->
+        <td *ngIf="editingId !== dish.id">{{ dish.fullname }}</td>
+        <td *ngIf="editingId === dish.id">
+          <input type="text" [(ngModel)]="editForm.fullname" />
+        </td>
+
+        <!-- Email -->
+        <td *ngIf="editingId !== dish.id">{{ dish.email }}</td>
+        <td *ngIf="editingId === dish.id">
+          <input type="email" [(ngModel)]="editForm.email" />
+        </td>
+
+        <!-- Actions -->
+        <td class="actions">
+          <button
+            *ngIf="editingId !== dish.id"
+            class="btn edit-btn"
+            (click)="startEdit(dish)"
+          >
+            Edit
+          </button>
+
+          <button
+            *ngIf="editingId === dish.id"
+            class="btn save-btn"
+            (click)="saveEdit(dish.id)"
+          >
+            Save
+          </button>
+
+          <button
+            *ngIf="editingId === dish.id"
+            class="btn cancel-btn"
+            (click)="cancelEdit()"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="btn delete-btn"
+            (click)="deleteDish(dish.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    *ngIf="!loading && !error && dishes.length === 0"
+    class="no-data"
+  >
+    No dishes submitted yet.
+  </div>
+</div>

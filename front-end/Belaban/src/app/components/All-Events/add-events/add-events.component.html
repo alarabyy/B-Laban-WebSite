@@ -1,0 +1,50 @@
+<div class="event-form-container">
+  <h2>Add New Event</h2>
+
+  <form (submit)="submitEvent(); $event.preventDefault()">
+    <label for="title">Event Title:</label>
+    <input
+      id="title"
+      type="text"
+      [(ngModel)]="event.title"
+      name="title"
+      required
+      minlength="3"
+      maxlength="150"
+      placeholder="Enter event title"
+    />
+
+    <label for="description">Event Description:</label>
+    <textarea
+      id="description"
+      [(ngModel)]="event.description"
+      name="description"
+      rows="5"
+      required
+      maxlength="1000"
+      placeholder="Describe the event"
+    ></textarea>
+
+    <label for="eventDate">Event Date:</label>
+    <input
+      id="eventDate"
+      type="date"
+      [(ngModel)]="event.eventDate"
+      name="eventDate"
+      required
+    />
+
+    <label for="image">Event Image (optional):</label>
+    <input
+      id="image"
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+    />
+
+    <button type="submit">Add Event</button>
+
+    <div *ngIf="submitError" class="error-message">{{ submitError }}</div>
+    <div *ngIf="submitSuccess" class="success-message">{{ submitSuccess }}</div>
+  </form>
+</div>

@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: #111;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out;
+  z-index: 100000; /* Ensure the sidebar is on top */
+}
+
+.sidebar h2 {
+  color: #1074de;
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar ul li a:hover {
+  background: #1074de;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menu-icon {
+  font-size: 18px;
+  color: white;
+}
+
+.open-menu {
+  display: flex; /* Align items in the center */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  position: fixed;
+  left: 0; /* Stick to the left */
+  top: 80px; /* Adjust this value to position at the top */
+  width: 25px; /* Set width for a circular shape */
+  height: 70px; /* Set height for a circular shape */
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  background: #1074de;
+  padding: 10px;
+  border-top-right-radius: 50%; /* Make the button rounded */
+  border-bottom-right-radius: 50%;
+  z-index: 10000; /* Ensure the button is on top */
+}
+
+.open-menu:hover {
+  background-color: #1074de; /* Change background color on hover */
+  transform: scale(1.1); /* Scale the button */
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.menu-text {
+  display: inline-block; /* Make text inline-block */
+  transform: rotate(90deg); /* Rotate text 90 degrees */
+  white-space: nowrap; /* Prevent text wrapping */
+  font-size: 12px; /* Adjust font size as needed */
+  font-weight: bold;
+}

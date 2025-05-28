@@ -1,0 +1,115 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.event-form-container {
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  background-color: #fefefe;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #34495e;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 7px;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+input[type='text'],
+input[type='date'],
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.8px solid #b0bec5;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #34495e;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical;
+}
+
+input[type='text']:focus,
+input[type='date']:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+}
+
+input[type='file'] {
+  margin-top: 12px;
+}
+
+button {
+  margin-top: 28px;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background-color: #3498db;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+button:hover:not(:disabled) {
+  background-color: #2980b9;
+  box-shadow: 0 8px 18px rgba(41, 128, 185, 0.6);
+  transform: translateY(-2px);
+}
+
+.error-message {
+  margin-top: 18px;
+  color: #c0392b;
+  font-weight: 700;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.success-message {
+  margin-top: 18px;
+  color: #27ae60;
+  font-weight: 700;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.info-message {
+  margin-top: 18px;
+  color: #2980b9;
+  font-style: italic;
+  animation: fadeInUp 0.4s ease forwards;
+}

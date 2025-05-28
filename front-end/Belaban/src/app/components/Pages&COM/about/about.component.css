@@ -1,0 +1,23 @@
+.about-page {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.about-page img {
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.about-page img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,39 @@
+<div class="admin-menu-container">
+  <h2>Menu Management - Admin</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of menuItems">
+        <td data-label="Name" *ngIf="editItem?.id !== item.id">{{ item.name }}</td>
+        <td data-label="Name" *ngIf="editItem?.id === item.id">
+          <input [(ngModel)]="updatedName" />
+        </td>
+
+        <td data-label="Description" *ngIf="editItem?.id !== item.id">{{ item.description }}</td>
+        <td data-label="Description" *ngIf="editItem?.id === item.id">
+          <input [(ngModel)]="updatedDescription" />
+        </td>
+
+        <td data-label="Price" *ngIf="editItem?.id !== item.id">{{ item.price | currency }}</td>
+        <td data-label="Price" *ngIf="editItem?.id === item.id">
+          <input type="number" [(ngModel)]="updatedPrice" />
+        </td>
+
+        <td data-label="Actions">
+          <button *ngIf="editItem?.id !== item.id" (click)="startEdit(item)">Edit</button>
+          <button *ngIf="editItem?.id === item.id" (click)="saveEdit()">Save</button>
+          <button *ngIf="editItem?.id === item.id" (click)="cancelEdit()">Cancel</button>
+          <button (click)="deleteItem(item.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

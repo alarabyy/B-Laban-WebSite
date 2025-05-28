@@ -1,0 +1,25 @@
+<div class="form-container animate-fade">
+  <h2>Create Your Own Dish</h2>
+
+  <form [formGroup]="dishForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="form-card">
+    <label>Dish Name *</label>
+    <input type="text" formControlName="dishName" placeholder="Enter your dish name" />
+
+    <label>Ingredients *</label>
+    <textarea formControlName="ingredients" placeholder="List the ingredients"></textarea>
+
+    <label>Email *</label>
+    <input type="email" formControlName="email" placeholder="user@example.com" />
+
+    <label>Full Name *</label>
+    <input type="text" formControlName="fullname" placeholder="Enter your full name" />
+
+    <label>Image</label>
+    <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Dish Image Preview" />
+    </div>
+
+    <button type="submit" [disabled]="dishForm.invalid">Submit</button>
+  </form>
+</div>

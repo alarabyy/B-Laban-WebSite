@@ -1,0 +1,376 @@
+:root {
+            --primary-blue: #007bff; /* Primary blue color */
+            --dark-blue: #0056b3; /* Darker blue */
+            --light-blue: #e0f7ff; /* Very light blue for background */
+            --text-color: #333; /* Primary text color */
+            --white: #ffffff; /* White color */
+            --accent-color: #17a2b8; /* Additional cyan blue color */
+            --secondary-accent: #ffc107; /* Yellow accent color */
+        }
+
+        /* Body and background styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif; /* Use a general font */
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%); /* Gradient background */
+            color: var(--text-color);
+            display: flex; /* Use flexbox to center content */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Page takes full viewport height */
+            overflow: hidden; /* Hide elements outside the viewport due to animation */
+            position: relative; /* For absolute positioning of animated elements */
+            direction: ltr; /* Left-to-Right direction */
+        }
+
+        /* Main content container */
+        .container {
+            text-align: center;
+            z-index: 10; /* Ensure content is above animated background elements */
+            position: relative; /* For absolute positioning of inner elements if needed */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for container */
+            padding: 50px; /* Increased padding */
+            border-radius: 20px; /* More rounded corners */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Larger shadow */
+            backdrop-filter: blur(8px); /* Stronger blur effect */
+            animation: containerEntrance 1.5s ease-out forwards; /* Container entrance animation */
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Error code (404) styles */
+        .error-code {
+            font-size: 12em; /* Even larger size */
+            font-family: 'Roboto', sans-serif; /* Bold font for the number */
+            color: var(--primary-blue);
+            margin: 0;
+            animation: scaleInRotate 2s ease-out forwards, pulseGlow 3s infinite alternate; /* Scale, rotate, pulse, glow */
+            text-shadow: 8px 8px var(--dark-blue); /* Larger text shadow */
+            position: relative; /* For potential pseudo-elements */
+        }
+
+        /* Error message styles */
+        .error-message {
+            font-size: 2.2em; /* Larger size */
+            margin-top: 20px;
+            margin-bottom: 40px;
+            animation: fadeInSlideUp 2.5s ease-out forwards; /* Fade in and slide up */
+            animation-delay: 0.8s; /* Delay after number animation */
+            opacity: 0; /* Start hidden */
+            position: relative; /* For pseudo-elements */
+            color: var(--text-color);
+        }
+
+         /* Pseudo-elements around error message */
+        .error-message::before,
+        .error-message::after {
+            content: '';
+            position: absolute;
+            width: 60px; /* Wider lines */
+            height: 4px; /* Thicker lines */
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-accent)); /* Gradient lines */
+            top: 50%;
+            transform: translateY(-50%);
+            animation: lineDraw 2.5s ease-out forwards infinite alternate; /* Line drawing animation */
+        }
+
+        .error-message::before {
+            left: -80px; /* Position left */
+        }
+
+        .error-message::after {
+            right: -80px; /* Position right */
+        }
+
+
+        /* Home link button styles */
+        .home-link {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue)); /* Gradient button background */
+            color: var(--white);
+            text-decoration: none;
+            padding: 18px 35px; /* Larger padding */
+            border-radius: 35px; /* More rounded */
+            font-size: 1.3em; /* Larger font size */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            animation: slideUpBounce 2.5s ease-out forwards; /* Slide up with bounce */
+            animation-delay: 1.8s; /* Longer delay */
+            opacity: 0; /* Start hidden */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Button shadow */
+            position: relative;
+            overflow: hidden; /* Hide overflow for hover effect */
+        }
+
+        .home-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* White overlay for hover effect */
+            transition: left 0.3s ease;
+        }
+
+        .home-link:hover::before {
+            left: 0; /* Slide in overlay on hover */
+        }
+
+
+        .home-link:hover {
+            background: linear-gradient(45deg, var(--dark-blue), var(--primary-blue)); /* Reverse gradient on hover */
+            transform: translateY(-8px); /* Larger upward movement on hover */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4); /* Larger shadow on hover */
+        }
+
+        .home-link:active {
+            transform: translateY(0); /* Return to original position on click */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Smaller shadow on click */
+        }
+
+        /* ------------------ Professional & Very Attractive Animations (Updated & Added) ------------------ */
+
+        /* Container entrance animation */
+        @keyframes containerEntrance {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        /* Scale in and rotate animation for error code */
+        @keyframes scaleInRotate {
+            from {
+                transform: scale(0.2) rotate(-30deg); /* Starts much smaller and rotated */
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0deg); /* Reaches normal size and no rotation */
+                opacity: 1;
+            }
+        }
+
+        /* Pulse and glow animation for error code */
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 8px 8px var(--dark-blue), 0 0 8px var(--primary-blue); /* Normal shadow + subtle glow */
+            }
+            50% {
+                 text-shadow: 8px 8px var(--dark-blue), 0 0 25px var(--primary-blue), 0 0 40px var(--primary-blue); /* Normal shadow + brighter glow */
+            }
+            100% {
+                text-shadow: 8px 8px var(--dark-blue), 0 0 8px var(--primary-blue); /* Return to subtle glow */
+            }
+        }
+
+
+        /* Fade in and slide up animation for error message */
+        @keyframes fadeInSlideUp {
+            from {
+                transform: translateY(50px); /* Starts further down */
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0); /* Reaches normal position */
+                opacity: 1;
+            }
+        }
+
+         /* Slide up with bounce animation for button */
+        @keyframes slideUpBounce {
+            0% {
+                transform: translateY(80px);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-20px); /* Bounces higher */
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(10px); /* Bounces back down */
+            }
+            100% {
+                transform: translateY(0); /* Settles in place */
+                opacity: 1;
+            }
+        }
+
+        /* Line drawing animation for pseudo-elements */
+        @keyframes lineDraw {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 60px; /* Reaches defined width */
+            }
+        }
+
+
+        /* Background animated elements (Updated) */
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 5; /* Behind main content */
+        }
+
+        .background-elements span {
+            position: absolute;
+            display: block;
+            list-style: none;
+            bottom: -200px; /* Start further down */
+            animation: backgroundAnimation 25s linear infinite; /* Generic animation name */
+            border-radius: 50%; /* Default to round */
+            background: rgba(0, 123, 255, 0.1); /* Very light blue transparent */
+        }
+
+        /* Different animations and styles for different elements */
+        .background-elements span:nth-child(odd) { /* Odd elements: round, primary blue */
+             border-radius: 50%;
+             background: rgba(0, 123, 255, 0.1);
+             animation-name: floatRotateScale; /* Specific animation */
+             animation-duration: 25s;
+        }
+
+        .background-elements span:nth-child(even) { /* Even elements: square, accent color */
+             border-radius: 0;
+             background: rgba(23, 162, 184, 0.1);
+             animation-name: squareFloatRotate; /* Specific animation */
+             animation-duration: 20s;
+             animation-direction: reverse; /* Reverse direction */
+        }
+
+         /* Add more variations */
+        .background-elements span:nth-child(3n+1) { /* Every 3rd + 1 element: larger, different animation */
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 193, 7, 0.1); /* Yellowish transparent */
+            animation-name: floatRotateScale;
+            animation-duration: 30s;
+            animation-timing-function: ease-in-out;
+        }
+
+         .background-elements span:nth-child(4n+2) { /* Every 4th + 2 element: smaller, faster, different animation */
+             width: 30px;
+             height: 30px;
+             background: rgba(0, 123, 255, 0.2);
+             animation-name: squareFloatRotate;
+             animation-duration: 15s;
+             animation-direction: normal;
+         }
+
+
+        /* Positioning, size, and delay for each background element (Increased number) */
+        .background-elements span:nth-child(1) { left: 5%; width: 100px; height: 100px; animation-delay: 0s; animation-duration: 20s;}
+        .background-elements span:nth-child(2) { left: 15%; width: 180px; height: 180px; animation-delay: 2s; animation-duration: 30s;}
+        .background-elements span:nth-child(3) { left: 20%; width: 20px; height: 20px; animation-delay: 4s; animation-duration: 15s;}
+        .background-elements span:nth-child(4) { left: 35%; width: 80px; height: 80px; animation-delay: 0s; animation-duration: 25s;}
+        .background-elements span:nth-child(5) { left: 40%; width: 120px; height: 120px; animation-delay: 5s; animation-duration: 22s;}
+        .background-elements span:nth-child(6) { left: 55%; width: 150px; height: 150px; animation-delay: 3s; animation-duration: 28s;}
+        .background-elements span:nth-child(7) { left: 65%; width: 25px; height: 25px; animation-delay: 7s; animation-duration: 18s;}
+        .background-elements span:nth-child(8) { left: 75%; width: 110px; height: 110px; animation-delay: 1s; animation-duration: 24s;}
+        .background-elements span:nth-child(9) { left: 85%; width: 60px; height: 60px; animation-delay: 6s; animation-duration: 19s;}
+        .background-elements span:nth-child(10) { left: 95%; width: 130px; height: 130px; animation-delay: 8s; animation-duration: 32s;}
+        .background-elements span:nth-child(11) { left: 10%; width: 90px; height: 90px; animation-delay: 10s; animation-duration: 21s;}
+        .background-elements span:nth-child(12) { left: 25%; width: 160px; height: 160px; animation-delay: 12s; animation-duration: 35s;}
+        .background-elements span:nth-child(13) { left: 50%; width: 50px; height: 50px; animation-delay: 14s; animation-duration: 16s;}
+        .background-elements span:nth-child(14) { left: 70%; width: 120px; height: 120px; animation-delay: 16s; animation-duration: 29s;}
+        .background-elements span:nth-child(15) { left: 80%; width: 40px; height: 40px; animation-delay: 18s; animation-duration: 17s;}
+        .background-elements span:nth-child(16) { left: 30%; width: 70px; height: 70px; animation-delay: 20s; animation-duration: 23s;}
+        .background-elements span:nth-child(17) { left: 45%; width: 140px; height: 140px; animation-delay: 22s; animation-duration: 31s;}
+        .background-elements span:nth-child(18) { left: 60%; width: 30px; height: 30px; animation-delay: 24s; animation-duration: 14s;}
+        .background-elements span:nth-child(19) { left: 90%; width: 100px; height: 100px; animation-delay: 26s; animation-duration: 26s;}
+        .background-elements span:nth-child(20) { left: 15%; width: 50px; height: 50px; animation-delay: 28s; animation-duration: 19s;}
+
+
+        /* ------------------ End of Animations ------------------ */
+
+        /* Responsive styles for small screens */
+        @media (max-width: 768px) {
+             .container {
+                padding: 30px; /* Reduced padding */
+                border-radius: 10px; /* Less rounded corners */
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Smaller shadow */
+             }
+            .error-code {
+                font-size: 8em; /* Smaller size on mobile */
+                 text-shadow: 6px 6px var(--dark-blue); /* Smaller shadow */
+            }
+
+            .error-message {
+                font-size: 1.8em; /* Smaller size */
+                 margin-top: 15px;
+                 margin-bottom: 30px;
+            }
+
+             .error-message::before,
+             .error-message::after {
+                 width: 40px; /* Shorter lines */
+                 left: -50px;
+                 right: -50px;
+             }
+
+
+            .home-link {
+                padding: 15px 30px; /* Smaller padding */
+                font-size: 1.1em;
+            }
+
+             /* Smaller background elements on mobile */
+            .background-elements span {
+                 width: 15px;
+                 height: 15px;
+            }
+
+             .background-elements span:nth-child(1) { width: 40px; height: 40px; }
+             .background-elements span:nth-child(2) { width: 80px; height: 80px; }
+             .background-elements span:nth-child(3) { width: 15px; height: 15px; }
+             .background-elements span:nth-child(4) { width: 50px; height: 50px; }
+             .background-elements span:nth-child(5) { width: 60px; height: 60px; }
+             .background-elements span:nth-child(6) { width: 70px; height: 70px; }
+             .background-elements span:nth-child(7) { width: 20px; height: 20px; }
+             .background-elements span:nth-child(8) { width: 55px; height: 55px; }
+             .background-elements span:nth-child(9) { width: 30px; height: 30px; }
+             .background-elements span:nth-child(10) { width: 65px; height: 65px; }
+             .background-elements span:nth-child(11) { width: 45px; height: 45px; }
+             .background-elements span:nth-child(12) { width: 75px; height: 75px; }
+             .background-elements span:nth-child(13) { width: 25px; height: 25px; }
+             .background-elements span:nth-child(14) { width: 60px; height: 60px; }
+             .background-elements span:nth-child(15) { width: 20px; height: 20px; }
+             .background-elements span:nth-child(16) { width: 35px; height: 35px; }
+             .background-elements span:nth-child(17) { width: 70px; height: 70px; }
+             .background-elements span:nth-child(18) { width: 15px; height: 15px; }
+             .background-elements span:nth-child(19) { width: 50px; height: 50px; }
+             .background-elements span:nth-child(20) { width: 25px; height: 25px; }
+        }
+
+         @media (max-width: 480px) {
+             .container {
+                 padding: 20px;
+             }
+             .error-code {
+                 font-size: 6em;
+             }
+             .error-message {
+                 font-size: 1.5em;
+                 margin-bottom: 20px;
+             }
+             .error-message::before,
+             .error-message::after {
+                 width: 20px;
+                 left: -30px;
+                 right: -30px;
+             }
+             .home-link {
+                 padding: 12px 25px;
+                 font-size: 1em;
+             }
+         }

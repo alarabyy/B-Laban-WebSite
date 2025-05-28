@@ -1,0 +1,28 @@
+
+
+<div class="admin-events-container">
+  <h1>Manage Events</h1>
+
+  <!-- <div *ngIf="loading" class="loading">Loading events...</div> -->
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <div class="events-list" *ngIf="!loading && !error && events.length > 0">
+    <div *ngFor="let event of events" class="event-card">
+      <img *ngIf="event.imageUrl" [src]="event.imageUrl" alt="{{ event.title }}" class="event-image" />
+      <div class="event-content">
+        <h2>{{ event.title }}</h2>
+        <p class="event-date">{{ event.eventDate | date: 'fullDate' }}</p>
+        <p>{{ event.description }}</p>
+      </div>
+      <button class="delete-btn"
+              [disabled]="deletingId === event.id"
+              (click)="deleteEvent(event.id)">
+        {{ deletingId === event.id ? 'Deleting...' : 'Delete' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error && events.length === 0" class="no-events">
+    No events available.
+  </div>
+</div>

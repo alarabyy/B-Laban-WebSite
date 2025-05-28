@@ -1,0 +1,18 @@
+<div class="feedback-container">
+  <h2>All Feedbacks</h2>
+
+  <div *ngIf="loading" class="loading">Loading feedbacks...</div>
+
+  <div class="feedback-grid">
+    <div class="card" *ngFor="let fb of feedbacks">
+      <h3>{{ fb.fullname }}</h3>
+      <p class="email">{{ fb.email }}</p>
+      <p class="comment">"{{ fb.comment }}"</p>
+      <div class="details">
+        <span>⭐ Rating: {{ fb.rating }}</span>
+        <span>{{ fb.date | date:'short' }}</span>
+      </div>
+      <button (click)="deleteFeedback(fb.id)">🗑 Delete</button>
+    </div>
+  </div>
+</div>

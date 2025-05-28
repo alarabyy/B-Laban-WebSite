@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Send Your Feedback</h2>
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="fullname">Name <small style="font-weight: normal; color: #666;">(Please enter your full name, at least 3 characters)</small></label>
+      <input
+        id="fullname"
+        type="text"
+        formControlName="fullname"
+        placeholder="Enter your full name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email <small style="font-weight: normal; color: #666;">(A valid email address is required)</small></label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Message <small style="font-weight: normal; color: #666;">(Write at least 10 characters)</small></label>
+      <textarea
+        id="comment"
+        rows="5"
+        formControlName="comment"
+        placeholder="Write your message here"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating (1-5) <small style="font-weight: normal; color: #666;">(Choose a number between 1 and 5)</small></label>
+      <input
+        id="rating"
+        type="number"
+        formControlName="rating"
+        min="1"
+        max="5"
+        placeholder="Enter a rating from 1 to 5"
+      />
+    </div>
+
+    <button type="submit" [disabled]="submitting">
+      {{ submitting ? 'Sending...' : 'Send Feedback' }}
+    </button>
+
+    <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

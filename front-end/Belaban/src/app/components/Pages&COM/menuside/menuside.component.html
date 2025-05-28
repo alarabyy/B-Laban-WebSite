@@ -1,0 +1,28 @@
+<div class="open-menu" (click)="toggleSidebar()">
+  <span class="close-btn"></span>
+  <span class="menu-text">Menu</span>
+</div>
+
+<div class="sidebar" [class.hidden]="isSidebarHidden" id="sidebar">
+  <h2>My Menu</h2>
+  <span class="close-btn" (click)="toggleSidebar()">&times;</span>
+<ul>
+  <li><a href="#" routerLink="Home" routerLinkActive="active"><i class="fa fa-tachometer menu-icon"></i> Home</a></li>
+  <li><a href="#" routerLink="About" routerLinkActive="active"><i class="fa fa-info-circle menu-icon"></i> ABOUT</a></li>
+  <li><a href="#" routerLink="Menu" routerLinkActive="active"><i class="fa fa-cutlery menu-icon"></i> Menu</a></li>
+  <li><a href="#" routerLink="MenuFromClients" routerLinkActive="active"><i class="fa fa-cutlery menu-icon"></i> MenuFromClients</a></li>
+  <li><a href="#" routerLink="CreateYourDish" routerLinkActive="active"><i class="fa fa-cutlery menu-icon"></i> CreateYourDish</a></li>
+  <li><a href="#" routerLink="Contact" routerLinkActive="active"><i class="fa fa-envelope menu-icon"></i> CONTACT</a></li>
+  <li><a href="#" routerLink="AddFeedBack" routerLinkActive="active"><i class="fa fa-envelope menu-icon"></i> AddFeedBack </a></li>
+  <li><a href="#" routerLink="Events" routerLinkActive="active"><i class="fa fa-calendar menu-icon"></i> EVENTS</a></li>
+    <ng-container *ngIf="isLoggedIn">
+<li>
+  <a href="#" (click)="logout()">
+    <i class="fa fa-sign-out menu-icon"></i> LogOut
+  </a>
+</li>
+    </ng-container>
+  <!-- <li><a href="#" routerLink="Login" routerLinkActive="active"><i class="fa fa-sign-in menu-icon"></i> Login</a></li> -->
+</ul>
+
+</div>

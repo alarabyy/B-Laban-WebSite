@@ -1,0 +1,75 @@
+<nav class="navbar">
+  <div class="logo">Belban</div>
+  <div class="slogan"><img src="milk-alt.png" style="color: aliceblue;"  width="35" alt=""></div>
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="nav-links" [class.active]="menuOpen">
+
+  <ng-container *ngIf="!isLoggedIn">
+    <li><a routerLink="Home" routerLinkActive="active"><i class="fa fa-home menu-icon"></i> Home</a></li>
+    <li><a routerLink="About" routerLinkActive="active"><i class="fa fa-info-circle menu-icon"></i> About</a></li>
+    <li><a routerLink="Menu" routerLinkActive="active"><i class="fa fa-utensils menu-icon"></i> Menu</a></li>
+    <li><a routerLink="MenuFromClients" routerLinkActive="active"><i class="fa fa-users menu-icon"></i> MenuFromClients</a></li>
+    <li><a routerLink="CreateYourDish" routerLinkActive="active"><i class="fa fa-plus-circle menu-icon"></i> CreateYourDish</a></li>
+    <li><a routerLink="Contact" routerLinkActive="active"><i class="fa fa-envelope menu-icon"></i> Contact</a></li>
+    <li><a routerLink="Events" routerLinkActive="active"><i class="fa fa-calendar menu-icon"></i> Events</a></li>
+    <li><a routerLink="AddFeedBack" routerLinkActive="active"><i class="fa fa-envelope menu-icon"></i> AddFeedBack</a></li>
+    <li><a routerLink="Login" routerLinkActive="active"><i class="fa fa-sign-in-alt menu-icon"></i> Login</a></li>
+    </ng-container>
+
+
+    <!-- روابط تظهر فقط إذا المستخدم  مسجل دخول -->
+    <ng-container *ngIf="isLoggedIn">
+<!-- <li>
+  <a href="#" (click)="logout()">
+    <i class="fa fa-sign-out menu-icon"></i> LogOut
+  </a>
+</li> -->
+  <!-- <li><a href="#" routerLink="SignUp" routerLinkActive="active"><i class="fa fa-user-plus menu-icon"></i> SignUp</a></li>
+    <li><a routerLink="AddToMenu" routerLinkActive="active">AddToMenu</a></li>
+    <li><a routerLink="MenuForAdmin" routerLinkActive="active">MenuForAdmin</a></li>
+    <li><a routerLink="AllMessages" routerLinkActive="active">AllMessages</a></li>
+    <li><a routerLink="AllFeedBack" routerLinkActive="active">AllFeedBack</a></li>
+    <li><a routerLink="AdminEvents" routerLinkActive="active">AdminEvents</a></li>
+    <li><a routerLink="AddEvents" routerLinkActive="active">AddEvents</a></li> -->
+    <!-- <li><a routerLink="AdminAllDishsForClient" routerLinkActive="active">AdminAllDishsForClient</a></li> -->
+  <li><a routerLink="AddToMenu" routerLinkActive="active"><i class="fa fa-plus-square menu-icon"></i> Add To Menu</a></li>
+  <li><a routerLink="MenuForAdmin" routerLinkActive="active"><i class="fa fa-list-alt menu-icon"></i> Menu For Admin</a></li>
+  <li><a routerLink="AllMessages" routerLinkActive="active"><i class="fa fa-comments menu-icon"></i> All Messages</a></li>
+  <li><a routerLink="AllFeedBack" routerLinkActive="active"><i class="fa fa-comment-dots menu-icon"></i> All Feedback</a></li>
+  <li><a routerLink="AdminEvents" routerLinkActive="active"><i class="fa fa-calendar-alt menu-icon"></i> Admin Events</a></li>
+  <li><a routerLink="AddEvents" routerLinkActive="active"><i class="fa fa-calendar-plus menu-icon"></i> Add Events</a></li>
+  <li><a routerLink="AdminAllDishsForClient" routerLinkActive="active"><i class="fa fa-hamburger menu-icon"></i>Admin All Dishes For Client</a></li>
+<li><a routerLink="SignUp" routerLinkActive="active"><i class="fa fa-user-plus menu-icon"></i> SignUp</a></li>
+
+</ng-container>
+
+  </ul>
+</nav>
+<!-- <li><a routerLink="Home" routerLinkActive="active"><i class="fa fa-home menu-icon"></i> Home</a></li>
+<li><a routerLink="About" routerLinkActive="active"><i class="fa fa-info-circle menu-icon"></i> About</a></li>
+<li><a routerLink="Menu" routerLinkActive="active"><i class="fa fa-utensils menu-icon"></i> Menu</a></li>
+<li><a routerLink="Contact" routerLinkActive="active"><i class="fa fa-envelope menu-icon"></i> Contact</a></li>
+<li><a routerLink="MenuFromClients" routerLinkActive="active"><i class="fa fa-users menu-icon"></i> Menu From Clients</a></li>
+<li><a routerLink="CreateYourDish" routerLinkActive="active"><i class="fa fa-plus-circle menu-icon"></i> Create Your Dish</a></li>
+<li><a routerLink="SignUp" routerLinkActive="active"><i class="fa fa-user-plus menu-icon"></i> SignUp</a></li>
+<li><a routerLink="Login" routerLinkActive="active"><i class="fa fa-sign-in-alt menu-icon"></i> Login</a></li>
+
+ روابط خاصة بالمسجلين دخول -->
+<!-- <ng-container *ngIf="isLoggedIn">
+  <li>
+    <a href="#" (click)="logout()">
+      <i class="fa fa-sign-out-alt menu-icon"></i> LogOut
+    </a>
+  </li>
+  <li><a routerLink="AddToMenu" routerLinkActive="active"><i class="fa fa-plus-square menu-icon"></i> Add To Menu</a></li>
+  <li><a routerLink="MenuForAdmin" routerLinkActive="active"><i class="fa fa-list-alt menu-icon"></i> Menu For Admin</a></li>
+  <li><a routerLink="AllMessages" routerLinkActive="active"><i class="fa fa-comments menu-icon"></i> All Messages</a></li>
+  <li><a routerLink="AllFeedBack" routerLinkActive="active"><i class="fa fa-comment-dots menu-icon"></i> All Feedback</a></li>
+  <li><a routerLink="AdminEvents" routerLinkActive="active"><i class="fa fa-calendar-alt menu-icon"></i> Admin Events</a></li>
+  <li><a routerLink="AddEvents" routerLinkActive="active"><i class="fa fa-calendar-plus menu-icon"></i> Add Events</a></li>
+  <li><a routerLink="AdminAllDishsForClient" routerLinkActive="active"><i class="fa fa-hamburger menu-icon"></i> All Dishes For Client</a></li>
+</ng-container> -->

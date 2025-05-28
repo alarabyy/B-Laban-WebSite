@@ -1,0 +1,31 @@
+<div *ngIf="loading" class="loading">Loading messages...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="!loading && messages.length > 0" class="responsive-table">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Subject</th>
+      <th>Message</th>
+      <th>Date Sent</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let msg of messages">
+      <td data-label="Full Name">{{ msg.fullname }}</td>
+      <td data-label="Email">{{ msg.email }}</td>
+      <td data-label="Subject">{{ msg.Subject }}</td>
+      <td data-label="Message">{{ msg.Message }}</td>
+      <td data-label="Date Sent">{{ msg.SentDate ? (msg.SentDate | date: 'medium') : 'N/A' }}</td>
+      <td data-label="Actions">
+        <button class="delete-btn" (click)="deleteMessage(msg.id)">🗑️ Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && messages.length === 0" class="no-data">
+  No messages found.
+</div>

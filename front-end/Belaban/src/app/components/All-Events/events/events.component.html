@@ -1,0 +1,18 @@
+
+<div class="events-container">
+  <h1>Upcoming Events</h1>
+
+  <!-- <div *ngIf="loading" class="loading">Loading events...</div> -->
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <div class="events-list" *ngIf="!loading && !error">
+    <div *ngFor="let event of events; let i = index" class="event-card" [style.animationDelay]="(i * 150) + 'ms'">
+      <img *ngIf="event.imageUrl" [src]="event.imageUrl" alt="{{ event.title }}" class="event-image" />
+      <div class="event-content">
+        <h2 class="event-title">{{ event.title }}</h2>
+        <p class="event-date">{{ event.eventDate | date: 'fullDate' }}</p>
+        <p class="event-description">{{ event.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
